@@ -9,12 +9,12 @@ from demo_db.public.emp_basic_local
 file_format = (type = csv field_optionally_enclosed_by='"')
 --on_error = 'skip_file';
 
-get @demo_db.public.%emp_basic_local file:///root/Snowflake/Data/Employee/unload/
+get @demo_db.public.%emp_basic_local file:///workspace/snowflake/Module-2/Snowflake-stages/Data/Employee/unload/;
 
 -- Unload data scene 2
 
 copy into @demo_db.public.%emp_basic_local/test_folder/test_
 from (select first_name, last_name,email from demo_db.public.emp_basic_local)
 file_format = (type = csv field_optionally_enclosed_by='"')
-OVERWRITE=TRUE
+OVERWRITE=TRUE;
 --on_error = 'skip_file';

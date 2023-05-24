@@ -13,11 +13,11 @@
 );
 
 
-create or replace stage control_db.internal_stages.my_int_stage
+create or replace stage control_db.internal_stages.my_int_stage;
 
 desc stage control_db.internal_stages.my_int_stage
 
-put file:///root/Snowflake/Data/Employee/employees0*.csv @control_db.internal_stages.my_int_stage/emp_basic_named_stage;
+put file:///workspace/snowflake/Module-2/Snowflake-stages/Data/Employee/employees0*.csv @control_db.internal_stages.my_int_stage/emp_basic_named_stage;
 
 TRUNCATE TABLE demo_db.public.emp_basic_local;
 

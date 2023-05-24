@@ -9,7 +9,7 @@ create or replace table demo_db.public.emp_basic_1 (
          start_date date
 );
 
-put file:///root/Snowflake/Data/Employee/employees0*.csv 
+put file:///workspace/snowflake/Module-2/Snowflake-stages/Data/Employee/employees0*.csv 
 @demo_db.public.%emp_basic_1;
 
 
@@ -21,6 +21,8 @@ file_format = (type = csv field_optionally_enclosed_by='"')
 pattern = '.*employees0[1-5].csv.gz'
 on_error = 'skip_file';
 
+create database control_db;
+create schema file_formats;
 create or replace file format control_db.file_formats.my_csv_format
 type = csv field_optionally_enclosed_by='"' field_delimiter = ',' 
 null_if = ('NULL', 'null') empty_field_as_null = true compression = gzip;
@@ -41,7 +43,7 @@ create or replace table demo_db.public.emp_basic_2 (
          email string 
 );
 
-put file:///root/Snowflake/Data/Employee/employees0*.csv @demo_db.public.%emp_basic_2;
+put file:///workspace/snowflake/Module-2/Snowflake-stages/Data/Employee/employees0*.csv @demo_db.public.%emp_basic_2;
 
 copy into demo_db.public.emp_basic_2
 from (select  t.$1 , t.$2 , t.$3 from @demo_db.public.%emp_basic_2 t)
@@ -69,7 +71,7 @@ create or replace table demo_db.public.emp_basic_local (
 
 # Upload data to stagig area.
 
-put file:///root/Snowflake/Data/Employee/employees0*.csv 
+put file:///workspace/snowflake/Module-2/Snowflake-stages/Data/Employee/employees0*.csv 
 @demo_db.public.%emp_basic_local;
 
 # Copy data from staging area to snowflake.
