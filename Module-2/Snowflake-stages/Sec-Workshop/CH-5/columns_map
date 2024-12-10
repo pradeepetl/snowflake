@@ -1,0 +1,13 @@
+c1  --> STATION
+c2  --> DATE
+c3  --> LATITUDE
+c4  --> LONGITUDE
+c6  --> NAME
+c7  --> TEMP_AVG
+c23 --> TEMP_MIN
+c21 --> TEMP_MAX
+c17 --> WDSP
+c19 --> MXSPD
+c25 --> PRCP
+c9  --> DEWP
+c15 --> VISIB
